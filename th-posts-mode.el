@@ -30,30 +30,30 @@
   (message "hello in th-posts"))
 
 ;; how to format code?
-  (defun th-posts-new-post (post-name)
-    (interactive "s请输入博客文件名称：")
-    (th-posts-new-post-or-draft post-name "posts"))
+(defun th-posts-new-post (post-name)
+  (interactive "s请输入博客文件名称：")
+  (th-posts-new-post-or-draft post-name "posts"))
 
-  ;; 新建草稿
-  (defun th-posts-new-draft (post-name)
-    (interactive "s请输入草稿文件名称：")
-    (th-posts-new-post-or-draft post-name "drafts"))
+;; 新建草稿
+(defun th-posts-new-draft (post-name)
+  (interactive "s请输入草稿文件名称：")
+  (th-posts-new-post-or-draft post-name "drafts"))
 
 ;; We have some job to do.
 ;; First is creat the folder.
-  (defun th-posts-new-post-or-draft (post-name folder)
-    "New a post or draft by FOLDER, and the name is POST-NAME."
-    (let* ((time (format-time-string "%Y-%m-%d"))
-           (slug (replace-regexp-in-string " +" "-" post-name))
-          (post-path (concat (th-folder-to-src "posts")
-                                  "/" slug ".org")))
-      (message post-path)
-      (if (file-exists-p post-path)
-        (progn
-      (message "博客已经存在了")
-      (find-file post-path))
+(defun th-posts-new-post-or-draft (post-name folder)
+  "New a post or draft by FOLDER, and the name is POST-NAME."
+  (let* ((time (format-time-string "%Y-%m-%d"))
+         (slug (replace-regexp-in-string " +" "-" post-name))
+        (post-path (concat (th-folder-to-src "posts")
+                                "/" slug ".org")))
+    (message post-path)
+    (if (file-exists-p post-path)
       (progn
-        (setq to-write (format "#+BEGIN_COMMENT\n.. title: %s\n.. slug: %s\n.. date: %s\n.. tags:
+    (message "博客已经存在了")
+    (find-file post-path))
+    (progn
+      (setq to-write (format "#+BEGIN_COMMENT\n.. title: %s\n.. slug: %s\n.. date: %s\n.. tags:
 .. category:
 .. link:
 .. description:

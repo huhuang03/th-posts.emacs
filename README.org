@@ -1,0 +1,4 @@
+It's a post pulgin for emacs style posts. It's not ready for judge which function should have, so it's only used by me.
+
+* TODOS
+** can config base-folder, and warnning if not set.
