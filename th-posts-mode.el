@@ -18,6 +18,23 @@
 (define-minor-mode th-posts-mode
   ())
 
+(defvar _th-posts-template
+     "#+BEGIN_COMMENT
+.. title: %s
+.. slug: %s
+.. date: %s
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT")
+
+(defun th-posts-insert-header ()
+  (interactive)
+  (let ((a 1))
+    (insert "hello")))
+
 (defun _th-posts-ensure-folder (filename)
   (unless (file-exists-p filename)
     (let ((dir (file-name-directory filename)))
